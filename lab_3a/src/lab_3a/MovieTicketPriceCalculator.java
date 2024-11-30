@@ -35,15 +35,15 @@ public class MovieTicketPriceCalculator {
                                     final int maxChildAge,
                                     final int minSeniorAge) {
     this.startMatineeTime = Objects.requireNonNull(startMatineeTime,
-        "matinee start time cannot be null");
+            "matinee start time cannot be null");
     this.endMatineeTime = Objects.requireNonNull(endMatineeTime,
-        "matinee end time cannot be null");
+            "matinee end time cannot be null");
     this.maxChildAge = maxChildAge;
     this.minSeniorAge = minSeniorAge;
 
     if (startMatineeTime.isAfter(endMatineeTime)) {
       throw new IllegalArgumentException(
-          "matinee start time cannot come after end time");
+              "matinee start time cannot come after end time");
     }
   }
 
@@ -60,7 +60,7 @@ public class MovieTicketPriceCalculator {
     final int discount = computeDiscount(age);
 
     if ((scheduledTime.equals(startMatineeTime) || scheduledTime.isAfter(startMatineeTime))
-        && scheduledTime.isBefore(endMatineeTime)) {
+            && scheduledTime.isBefore(endMatineeTime)) {
       return MATINEE_PRICE_CENTS - discount;
     } else {
       return STANDARD_PRICE_CENTS - discount;
